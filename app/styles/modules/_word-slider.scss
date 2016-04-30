@@ -1,0 +1,47 @@
+.word-slider {
+  width: 300px;
+  border: 1px solid #000;
+
+  &__inner {
+    white-space: nowrap;
+    margin-left: 50%;
+    text-align: center;
+
+    transition: all .3s;
+
+    & > * {
+      display: inline-block;
+      transition: all .3s;
+    }
+
+    .word-slider__word {
+      padding: 8px 15px;
+      border-radius: 6px;
+      line-height: 1;
+      transition: all .3s;
+    }
+
+    .is-active {
+      .word-slider__word {
+        transform: scale(1);
+        background-color: #F0F1F3;
+        transform: scale(1.4);
+      }
+    }
+
+    & > * {
+      &.is-active {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      &:first-of-type {
+        &.is-active {
+          padding-left: 0;
+        }
+      }
+    }
+
+
+  }
+}

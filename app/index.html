@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fast writing</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="app">
+      <div class="app__settings">
+        <h1>Ord på tid</h1>
+        <p>Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
+      </div>
+
+      <div>
+        <select name="level" id="levelSelect" class="js-select-level">
+          <option value="1">Nem</option>
+          <option value="2">Middelsvær</option>
+          <option value="3">Svær</option>
+        </select>
+
+        <select name="time" id="timeSelect" class="js-select-time">
+          <option value="10">10 sekunder</option>
+          <option value="60">1 Minut</option>
+          <option value="120">2 Minutter</option>
+          <option value="180">3 Minutter</option>
+        </select>
+
+        <button class="js-start-game">Sæt igang!</button>
+      </div>
+
+      <div class="app__game">
+        <div class="js-countdown"></div>
+        <div class="word-slider">
+          <div class="js-words word-slider__inner"></div>
+        </div>
+        <div>
+          <input type="text" class="js-word-input">
+        </div>
+      </div>
+
+      <div class="app__results">
+        <div>
+          <h2>Flot resultat!</h2>
+          <p>Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p>
+        </div>
+        <div>
+          Stjerner
+        </div>
+        <div>
+          <button>Vælg andre indstillinger</button>
+          <button>Prøv igen</button>
+        </div>
+        <div>
+          <p>Herunder kan du se de ord du ikke fik helt rigtige.</p>
+          <div class="js-error-word-list"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
