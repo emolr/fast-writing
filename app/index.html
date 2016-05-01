@@ -26,48 +26,55 @@
 
     <div class="app">
       <div class="app__settings">
-        <h1>Ord på tid</h1>
-        <p>Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
+        <div>
+          <h1>Ord på tid</h1>
+          <p>Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
+        </div>
+
+        <div>
+          <select name="level" id="levelSelect" class="js-select-level">
+            <option value="1">Nem</option>
+            <option value="2">Middelsvær</option>
+            <option value="3">Svær</option>
+          </select>
+
+          <select name="time" id="timeSelect" class="js-select-time">
+            <option value="10">10 sekunder</option>
+            <option value="60">1 Minut</option>
+            <option value="120">2 Minutter</option>
+            <option value="180">3 Minutter</option>
+          </select>
+
+          <button class="js-start-game">Sæt igang!</button>
+        </div>
       </div>
 
-      <div>
-        <select name="level" id="levelSelect" class="js-select-level">
-          <option value="1">Nem</option>
-          <option value="2">Middelsvær</option>
-          <option value="3">Svær</option>
-        </select>
-
-        <select name="time" id="timeSelect" class="js-select-time">
-          <option value="10">10 sekunder</option>
-          <option value="60">1 Minut</option>
-          <option value="120">2 Minutter</option>
-          <option value="180">3 Minutter</option>
-        </select>
-
-        <button class="js-start-game">Sæt igang!</button>
-      </div>
-
-      <div class="app__game">
+      <div class="app__game hide">
         <div class="js-countdown"></div>
         <div class="word-slider">
           <div class="js-words word-slider__inner"></div>
         </div>
         <div>
-          <input type="text" class="js-word-input">
+          <div>
+            <input type="text" class="js-word-input">
+          </div>
+          <p>
+            Skriv ordende ovenfor så hurtigt du kan og få point for alle dem du staver rigtig
+          </p>
         </div>
       </div>
 
-      <div class="app__results">
+      <div class="app__results hide">
         <div>
           <h2>Flot resultat!</h2>
           <p>Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p>
         </div>
         <div>
-          Stjerner
+          du har fået <span class="js-user-points"></span> / <span class="js-user-entries"></span> rigtige
         </div>
         <div>
-          <button>Vælg andre indstillinger</button>
-          <button class="js-clear-game">Prøv igen</button>
+          <button class="js-show-settings">Vælg andre indstillinger</button>
+          <button class="js-start-game">Prøv igen</button>
         </div>
         <div>
           <p>Herunder kan du se de ord du ikke fik helt rigtige.</p>

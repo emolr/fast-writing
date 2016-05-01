@@ -29,7 +29,7 @@ export default class Countdown {
 
 
   startCounter(endtime) {
-    let timeLeft = this.getTimeRemaining(endtime);
+    this.getTimeRemaining(endtime);
     this.elem.innerHTML = `
       <span>`+ this.minutes +`</span>
       <span>:</span>
@@ -43,7 +43,6 @@ export default class Countdown {
           resolve('countdown done');
 
         } else {
-          console.log(this.total)
           this.getTimeRemaining(this.endTime);
 
           this.elem.innerHTML = `
@@ -54,6 +53,15 @@ export default class Countdown {
         }
       }, 1000);
     });
+
+  }
+
+  pause() {
+    clearInterval(this.counterId);
+  }
+
+  unPause() {
+    this.startCounter(this.endTime);
 
   }
 

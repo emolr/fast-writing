@@ -11,3 +11,32 @@ export function extend(defaultOptions, inputOptions) {
 
   return newOptions;
 }
+
+export function animateIn(element) {
+  return new Promise((resolve, reject) => {
+    function show() {
+      element.classList.remove('animate-enter');
+      element.removeEventListener('animationend', show, false);
+      resolve();
+    }
+    element.style.display = 'block';
+    element.classList.add('animate-enter');
+    console.log('animateIn', element);
+    element.addEventListener('animationend', show, false);
+  });
+}
+
+export function animateOut(element) {
+  console.log('animateOut', element)
+
+  return new Promise((resolve, reject) => {
+    function hide() {
+      element.classList.remove('animate-leave');
+      element.style.display = 'none';
+      element.removeEventListener('animationend', hide, false);
+      resolve();
+    }
+    element.classList.add('animate-leave');
+    element.addEventListener('animationend', hide, false);
+  });
+}
