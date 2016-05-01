@@ -1,3 +1,5 @@
+import * as Utils from './Utils';
+
 export default class WordSlider {
 
   constructor(element) {
@@ -15,8 +17,8 @@ export default class WordSlider {
     const firstSlideWidth = this.slides[0].offsetWidth-15;
 
     // First center the first item
-    this.slideContainer.style.transition = "0s";
-    this.slideContainer.style.transform = 'translateX(-'+ (firstSlideWidth / 2) +'px)';
+    this.slideContainer.setAttribute('style', Utils.translate3d(-(firstSlideWidth / 2), 0, 0, 0));
+
     this.slides[0].classList.add('is-active');
 
     for (let i = 0; i < this.slides.length; i++) {
@@ -31,16 +33,15 @@ export default class WordSlider {
     this.nextSlideItem = this.slides[this.nextSlide];
     this.currentSlide = this.nextSlide;
 
-    let transformValue = (this.positions[this.nextSlide]);
+    let transformValue = -(this.positions[this.nextSlide]);
     let activeSlide = document.querySelectorAll('.is-active');
 
     if (activeSlide[0]) {
       activeSlide[0].classList.remove('is-active');
     }
 
-    this.slideContainer.style.transition = "";
     this.nextSlideItem.classList.add('is-active');
-    this.slideContainer.style.transform = 'translateX(-'+ transformValue +'px)';
+    this.slideContainer.setAttribute('style', Utils.translate3d((transformValue), 0, 0, 200));
   }
 
 }

@@ -21,23 +21,28 @@ export default class GameModel extends Model {
 
   static getWords(level = 1) {
     let words = [];
+    let wordList = [];
     return new Promise((resolve, reject) => {
 
       switch (level) {
         case 1:
-            words = ['halvtreds', 'stadse', 'ridse', 'meget', 'lystig', 'hurtigt', 'adresse', 'fortov', 'hoved', 'linje', 'satellit', 'hvorimod', 'træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+            wordList = ['halvtreds', 'stadse', 'ridse', 'meget', 'lystig', 'hurtigt', 'adresse', 'fortov', 'hoved', 'linje', 'satellit', 'hvorimod', 'træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+            words = Utils.shuffle(wordList);
         break;
         case 2:
-            words = ['træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+            wordList = ['træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+            words = Utils.shuffle(wordList);
         break;
         case 3:
-            words = ['WOK', 'moum', 'tosse', 'råke', 'meaf', 'miaw', 'træcis', 'meakrome', 'tjuten', 'abelone', 'moumsons', 'most'];
+            wordList = ['WOK', 'moum', 'tosse', 'råke', 'meaf', 'miaw', 'træcis', 'meakrome', 'tjuten', 'abelone', 'moumsons', 'most'];
+            words = Utils.shuffle(wordList);
         break;
       }
 
       resolve(words);
 
     });
+
 
   }
 }

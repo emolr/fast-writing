@@ -188,7 +188,6 @@ export default class AppController extends Controller {
       if (value == '' || value == ' ') {
           // do nothing
       } else if (value.length > 0) {
-        console.log('what', value.length)
 
         this.userWords.push(value.trim());
         this.wordInput[0].value = '';
@@ -328,7 +327,7 @@ export default class AppController extends Controller {
     elem[0].classList.remove('stars--1');
     elem[0].classList.remove('stars--2');
     elem[0].classList.remove('stars--3');
-    console.log('point', this.points, 'seconds', this.settings.seconds);
+
     if (this.points > this.timeElapsed && this.points === this.userWords.length) {
       elem[0].classList.add('stars--3');
     } else if (this.points < (this.userWords.length / 2)) {
