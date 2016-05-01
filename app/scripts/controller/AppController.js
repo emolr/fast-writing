@@ -30,12 +30,26 @@ export default class AppController extends Controller {
 
     this.levelSelector = document.querySelectorAll('.js-select-level');
     this.timeSelector = document.querySelectorAll('.js-select-time');
+    this.wordsContainer = document.querySelectorAll('.js-words');
     this.startBtn = document.querySelectorAll('.js-start-game');
     this.startBtn[0].addEventListener('click', this.startNewGame.bind(this));
+    this.wordInput = document.querySelectorAll('.js-word-input');
+    this.wordInput[0].addEventListener('keydown', this.submitWord.bind(this), false);
+  }
+
+  clearGame() {
+    this.words = [];
+    this.userWords = [];
+    this.settings = {
+      level: null,
+      seconds: null
+    };
   }
 
 
   startNewGame() {
+    this.clearGame();
+
     this.settings = {
       level: parseInt(this.levelSelector[0].options[this.levelSelector[0].selectedIndex].value),
       seconds: parseInt(this.timeSelector[0].options[this.timeSelector[0].selectedIndex].value)
@@ -57,17 +71,13 @@ export default class AppController extends Controller {
         this.buildCountdown(this.newGame.seconds);
         this.wordSlider = document.querySelectorAll('.word-slider');
         this.slider = new WordSlider(this.wordSlider);
+        this.wordInput[0].focus();
       });
-
-    // Register the input and start the word handling
-    this.wordInput = document.querySelectorAll('.js-word-input');
-    this.wordInput[0].addEventListener('keydown', this.submitWord.bind(this));
 
   }
 
 
   getWordsAndPopulate(level) {
-    this.wordsContainer = document.querySelectorAll('.js-words');
     let wordList = '';
 
     return new Promise((resolve, reject) => {
@@ -96,21 +106,24 @@ export default class AppController extends Controller {
 
   buildCountdown(seconds) {
 
-    this.countdown = document.querySelectorAll('.js-countdown');
+    this.countDownElem = document.querySelectorAll('.js-countdown');
 
     let endtime = new Date();
     endtime.setSeconds(endtime.getSeconds() + parseInt(seconds));
 
-    CountDown.counter(this.countdown[0], endtime)
-      .then(() => {
-        this.showResults();
-      });
+    if (this.countdown) {
+      this.countdown.destroy(this.countDownElem[0]);
+    }
+
+    this.countdown = new CountDown(this.countDownElem[0], endtime);
+    this.countdown.startCounter(endtime).then(() => {
+      this.showResults();
+    });
 
   }
 
 
   submitWord(e) {
-
     if (e.keyCode == 13 || e.keyCode == 32) {
       let value = this.wordInput[0].value;
       this.userWords.push(value.trim());
