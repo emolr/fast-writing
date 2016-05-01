@@ -43,6 +43,9 @@ export default class AppController extends Controller {
     this.wordInput[0].addEventListener('keydown', this.submitWord.bind(this), false);
     this.wordInput[0].addEventListener('keyup', this.clearEmptyInput.bind(this), false);
 
+    // Sounds
+    this.successSound = document.getElementById("successSound");
+
     for (let i = 0; i < this.startBtn.length; i++) {
       this.startBtn[i].addEventListener('click', this.startNewGame.bind(this));
     }
@@ -202,6 +205,7 @@ export default class AppController extends Controller {
 
           if (this.userWords[wordIndex].toUpperCase() === this.words[wordIndex].toUpperCase()) {
             wordElem.classList.add('is-correct');
+            this.successSound.play();
           } else {
             wordElem.classList.add('is-incorrect');
           }
