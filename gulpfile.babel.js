@@ -7,6 +7,7 @@ import {stream as wiredep} from 'wiredep';
 import babelify from 'babelify';
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
+import ghPages from'gulp-gh-pages';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -24,6 +25,11 @@ gulp.task('styles', () => {
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
 
 // gulp.task('scripts', () => {
