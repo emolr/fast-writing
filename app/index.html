@@ -28,37 +28,42 @@
       <div class="app__settings">
         <div>
           <h1>Ord på tid</h1>
-          <p>Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
+          <p class="l-large m-b-xl">Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
         </div>
 
-        <div>
-          <select name="level" id="levelSelect" class="js-select-level">
+        <div class="l-small">
+
+          <select name="level" id="levelSelect" class="select-level js-select-level">
             <option value="1">Nem</option>
             <option value="2">Middelsvær</option>
             <option value="3">Svær</option>
           </select>
 
-          <select name="time" id="timeSelect" class="js-select-time">
-            <option value="10">10 sekunder</option>
+          <select name="time" id="timeSelect" class="select-time js-select-time m-b-m">
             <option value="60">1 Minut</option>
             <option value="120">2 Minutter</option>
             <option value="180">3 Minutter</option>
           </select>
 
-          <button class="js-start-game">Sæt igang!</button>
+          <button class="js-start-game expand">Sæt igang!</button>
         </div>
       </div>
 
       <div class="app__game hide">
-        <div class="js-countdown"></div>
+        <div>
+          <img src="images/clock.svg" alt="" width="30" height="auto">
+        </div>
+        <h1 class="dim m-b-xl">
+          <span class="js-countdown"></span>
+        </h1>
         <div class="word-slider">
           <div class="js-words word-slider__inner"></div>
         </div>
         <div>
           <div>
-            <input type="text" class="js-word-input">
+            <input type="text" class="js-word-input l-large m-b-m">
           </div>
-          <p>
+          <p class="l-medium">
             Skriv ordende ovenfor så hurtigt du kan og få point for alle dem du staver rigtig
           </p>
         </div>
@@ -67,18 +72,23 @@
       <div class="app__results hide">
         <div>
           <h2>Flot resultat!</h2>
-          <p>Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p>
+          <p class="l-medium m-b-l">Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p>
+        </div>
+        <div class="m-b-l">
+          <div class="m-b-s stars js-stars"></div>
+          <p>
+            <b>
+              Du har fået <span class="js-user-points"></span> / <span class="js-user-entries"></span> rigtige
+            </b>
+          </p>
         </div>
         <div>
-          du har fået <span class="js-user-points"></span> / <span class="js-user-entries"></span> rigtige
-        </div>
-        <div>
-          <button class="js-show-settings">Vælg andre indstillinger</button>
+          <button class="js-show-settings secondary">Vælg andre indstillinger</button>&nbsp;&nbsp;
           <button class="js-start-game">Prøv igen</button>
         </div>
-        <div>
-          <p>Herunder kan du se de ord du ikke fik helt rigtige.</p>
-          <div class="js-error-word-list"></div>
+        <div class="js-error-word-text hide m-t-xl">
+          <p class="m-b-m">Herunder kan du se de ord du ikke fik helt rigtige.</p>
+          <div class="js-error-word-list h3 error-list"></div>
         </div>
 
       </div>
@@ -100,6 +110,7 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/e79b1ea5-8b8d-4ac9-a478-4bd68e3f8455.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>

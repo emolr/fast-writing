@@ -20,27 +20,24 @@ export default class GameModel extends Model {
   }
 
   static getWords(level = 1) {
+    let words = [];
+    return new Promise((resolve, reject) => {
 
-    switch (level) {
-      case 1:
-        return new Promise((resolve, reject) => {
-          let words = ['this', 'is', 'easy', 'i', 'must', 'say'];
-          resolve(words);
-        });
-      break;
-      case 2:
-        return new Promise((resolve, reject) => {
-          let words = ['this', 'is', 'medium'];
-          resolve(words);
-        });
-      break;
-      case 3:
-        return new Promise((resolve, reject) => {
-          let words = ['game', 'is', 'hard'];
-          resolve(words);
-        });
-      break;
-    }
+      switch (level) {
+        case 1:
+            words = ['halvtreds', 'stadse', 'ridse', 'meget', 'lystig', 'hurtigt', 'adresse', 'fortov', 'hoved', 'linje', 'satellit', 'hvorimod', 'træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+        break;
+        case 2:
+            words = ['træg', 'stage', 'stige', 'nøjagtig', 'bue', 'bage', 'hjort', 'hvilken', 'vånde'];
+        break;
+        case 3:
+            words = ['WOK', 'moum', 'tosse', 'råke', 'meaf', 'miaw', 'træcis', 'meakrome', 'tjuten', 'abelone', 'moumsons', 'most'];
+        break;
+      }
+
+      resolve(words);
+
+    });
 
   }
 }

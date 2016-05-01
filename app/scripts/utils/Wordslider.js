@@ -12,7 +12,7 @@ export default class WordSlider {
     this.nextSlideItem = this.slides[this.nextSlide];
     this.nextSlideItemWidth = this.nextSlideItem.offsetWidth;
     this.nextSlideOffset = this.nextSlideItem.offsetLeft - this.containerPosition;
-    const firstSlideWidth = this.slides[0].offsetWidth;
+    const firstSlideWidth = this.slides[0].offsetWidth-15;
 
     // First center the first item
     this.slideContainer.style.transition = "0s";

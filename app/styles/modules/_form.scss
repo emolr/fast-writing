@@ -1,0 +1,80 @@
+input {
+  font-size: 22px;
+  color: $color-dark-tint-1;
+  border-radius: 6px;
+  padding: 8px 20px;
+  border: 2px solid $color-dark-tint-3;
+  transition: border .3s;
+
+  &::placeholder {
+    color: $color-dark-tint-3;
+  }
+
+  &:focus {
+    border: 2px solid $color-brand-primary;
+    outline: 0;
+  }
+}
+
+button {
+  padding: 10px 30px;
+  border-radius: 3px;
+  border: 1px solid $color-brand-primary;
+  background-color: $color-brand-primary;
+  color: #FFF;
+  font-size: 20px;
+
+  transition: all .05s;
+
+  &:focus, &:hover {
+    background-color: darken($color-brand-primary, 3%);
+    outline-color: #E1DFFF;
+  }
+
+  &.secondary {
+    border: 1px solid $color-dark-tint-3;
+    background-color: transparent;
+    color: $color-dark-tint-1;
+
+    &:focus, &:hover {
+      background-color: transparent;
+      border-color: $color-brand-primary;
+      color: $color-brand-primary;
+    }
+  }
+
+  &.expand {
+    width: 100%;
+  }
+}
+
+
+select {
+  position: relative;
+  width: 100%;
+  appearance: none;
+  background: url(../images/arrow-down.svg) calc(100% - 20px) calc(50%) no-repeat;
+
+  @extend button;
+  @extend button.secondary;
+
+  & + select {
+    margin-top: 15px;
+  }
+
+  &.select-level {
+    background:
+      url(../images/star-hollow.svg) 20px 50% no-repeat,
+      url(../images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
+    padding-left: 60px;
+  }
+
+  &.select-time {
+    background:
+      url(../images/clock.svg) 20px 50% no-repeat,
+      url(../images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
+    padding-left: 60px;
+  }
+}
+
+

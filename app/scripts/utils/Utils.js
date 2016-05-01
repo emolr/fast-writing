@@ -21,13 +21,11 @@ export function animateIn(element) {
     }
     element.style.display = 'block';
     element.classList.add('animate-enter');
-    console.log('animateIn', element);
     element.addEventListener('animationend', show, false);
   });
 }
 
 export function animateOut(element) {
-  console.log('animateOut', element)
 
   return new Promise((resolve, reject) => {
     function hide() {

@@ -23,6 +23,8 @@ export default class AppController extends Controller {
       level: null,
       seconds: null
     };
+    this.secondsElapsed = 0;
+    this.startTime = null;
 
     this.settingsPane = document.querySelectorAll('.app__settings');
     this.gamePane = document.querySelectorAll('.app__game');
@@ -56,6 +58,8 @@ export default class AppController extends Controller {
       level: null,
       seconds: null
     };
+    this.secondsElapsed = 0;
+    this.startTime = null;
   }
 
 
@@ -67,9 +71,7 @@ export default class AppController extends Controller {
 
 
   startNewGame() {
-    console.log('start')
     this.clearGame();
-
     this.settings = {
       level: parseInt(this.levelSelector[0].options[this.levelSelector[0].selectedIndex].value),
       seconds: parseInt(this.timeSelector[0].options[this.timeSelector[0].selectedIndex].value)
@@ -112,6 +114,9 @@ export default class AppController extends Controller {
               this.showResults();
             });
             this.currentPane = this.gamePane;
+
+            // Start time tracker
+            this.startTime = new Date();
           });
         });
       });
@@ -213,12 +218,16 @@ export default class AppController extends Controller {
   showResults() {
     Utils.animateOut(this.gamePane[0]).then(() => {
       Utils.animateIn(this.resultPane[0]).then(() => {
-
       });
     });
 
+    // Stop elapsed time
+    const timeNow = new Date();
+    this.timeElapsed = timeNow.getSeconds() - this.startTime.getSeconds();
+
     this.countdown.destroy(this.countDownElem[0]);
     const errorContainer = document.querySelectorAll('.js-error-word-list');
+    const errorText = document.querySelectorAll('.js-error-word-text');
     const userPointsContainer = document.querySelectorAll('.js-user-points');
     const userEntriesContainer = document.querySelectorAll('.js-user-entries');
     let errorList = '';
@@ -228,11 +237,17 @@ export default class AppController extends Controller {
         errorList = errorList +`
           <div>
             <span class="is-incorrect">`+ word +`</span>
-            <span>--></span>
+            <span><img src="images/arrow.svg" alt="arrow"/></span>
             <span>`+ this.words[i] +`</span>
           </div>`;
       }
     });
+
+    if (errorList != '') {
+      errorText[0].classList.remove('hide');
+    } else {
+      errorText[0].classList.add('hide');
+    }
 
     errorContainer[0].innerHTML = errorList;
 
@@ -240,6 +255,8 @@ export default class AppController extends Controller {
       userPointsContainer[0].innerHTML = result;
       userEntriesContainer[0].innerHTML = this.userWords.length
     });
+
+    this.buildStars();
 
   }
 
@@ -264,6 +281,40 @@ export default class AppController extends Controller {
 
   nextWord() {
     this.slider.slideNext();
+  }
+
+
+  buildStars() {
+    const elem = document.querySelectorAll('.js-stars');
+    const starIcon = `<svg width="39px" height="37px" viewBox="0 0 39 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+        <title>Shape Copy 2</title>
+        <desc>Created with Sketch.</desc>
+        <defs></defs>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Resultat" transform="translate(-752.000000, -361.000000)" fill="#F5F5F5">
+                <g id="ic_star_border_black_24px" transform="translate(653.000000, 361.000000)">
+                    <g id="Group">
+                        <polygon id="Shape-Copy-2" points="138 14.0325843 124.064326 12.8308989 118.617978 0 113.171629 12.8502809 99.2359551 14.0325843 109.818539 23.2002809 106.639888 36.8258427 118.617978 29.5963483 130.596067 36.8258427 127.436798 23.2002809"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>`;
+    const stars = starIcon + starIcon + starIcon;
+    elem[0].innerHTML = stars;
+    elem[0].classList.remove('stars--1');
+    elem[0].classList.remove('stars--2');
+    elem[0].classList.remove('stars--3');
+    console.log('point', this.points, 'seconds', this.settings.seconds);
+    if (this.points > this.timeElapsed && this.points === this.userWords.length) {
+      elem[0].classList.add('stars--3');
+    } else if (this.points < (this.userWords.length / 2)) {
+      elem[0].classList.add('stars--1');
+    } else if (this.points <= this.userWords.length) {
+      elem[0].classList.add('stars--2');
+    }
+
   }
 
 
