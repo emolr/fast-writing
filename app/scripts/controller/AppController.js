@@ -41,6 +41,7 @@ export default class AppController extends Controller {
 
     this.settingsBtn[0].addEventListener('click', this.showSettings.bind(this));
     this.wordInput[0].addEventListener('keydown', this.submitWord.bind(this), false);
+    this.wordInput[0].addEventListener('keyup', this.clearEmptyInput.bind(this), false);
 
     for (let i = 0; i < this.startBtn.length; i++) {
       this.startBtn[i].addEventListener('click', this.startNewGame.bind(this));
@@ -168,36 +169,57 @@ export default class AppController extends Controller {
 
   }
 
+  clearEmptyInput(e) {
+    if (e.keyCode == 32) {
+      let value = this.wordInput[0].value;
+
+      if (value === ' ') {
+        this.wordInput[0].value = '';
+      }
+
+    }
+  }
+
 
   submitWord(e) {
     if (e.keyCode == 13 || e.keyCode == 32) {
       let value = this.wordInput[0].value;
-      this.userWords.push(value.trim());
-      this.wordInput[0].value = '';
 
-      /*
-       * check if words are matching
-      */
-      const wordIndex = this.userWords.length-1;
-      const wordElem = document.getElementById('word-'+ wordIndex);
+      if (value == '' || value == ' ') {
+          // do nothing
+      } else if (value.length > 0) {
+        console.log('what', value.length)
 
-      if (this.userWords.length < this.words.length) {
+        this.userWords.push(value.trim());
+        this.wordInput[0].value = '';
 
-        if (this.userWords[wordIndex].toUpperCase() === this.words[wordIndex].toUpperCase()) {
-          wordElem.classList.add('is-correct');
+        /*
+         * check if words are matching
+        */
+        const wordIndex = this.userWords.length-1;
+        const wordElem = document.getElementById('word-'+ wordIndex);
+
+        if (this.userWords.length < this.words.length) {
+
+          if (this.userWords[wordIndex].toUpperCase() === this.words[wordIndex].toUpperCase()) {
+            wordElem.classList.add('is-correct');
+          } else {
+            wordElem.classList.add('is-incorrect');
+          }
+          this.nextWord();
+
         } else {
-          wordElem.classList.add('is-incorrect');
-        }
-        this.nextWord();
+          if (this.userWords[wordIndex].toUpperCase() === this.words[wordIndex].toUpperCase()) {
+            wordElem.classList.add('is-correct');
+          } else {
+            wordElem.classList.add('is-incorrect');
+          }
 
-      } else {
-        if (this.userWords[wordIndex].toUpperCase() === this.words[wordIndex].toUpperCase()) {
-          wordElem.classList.add('is-correct');
-        } else {
-          wordElem.classList.add('is-incorrect');
+          this.showResults();
         }
-        this.showResults();
+
       }
+
     }
 
   }
