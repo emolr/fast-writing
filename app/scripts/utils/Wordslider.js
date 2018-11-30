@@ -20,9 +20,10 @@ export default class WordSlider {
     this.slideContainer.setAttribute('style', Utils.translate3d(-(firstSlideWidth / 2), 0, 0, 0));
 
     this.slides[0].classList.add('is-active');
+    const containerRect = this.slideContainer.getBoundingClientRect();
 
     for (let i = 0; i < this.slides.length; i++) {
-      const elemPosition = this.slides[i].offsetLeft - this.containerPosition + (this.slides[i].offsetWidth / 2);
+      const elemPosition = this.slides[i].getBoundingClientRect().x - containerRect.x + (this.slides[i].offsetWidth / 2);
       this.positions.push(elemPosition);
     }
 
@@ -34,6 +35,7 @@ export default class WordSlider {
     this.currentSlide = this.nextSlide;
 
     let transformValue = -(this.positions[this.nextSlide]);
+
     let activeSlide = document.querySelectorAll('.is-active');
 
     if (activeSlide[0]) {
