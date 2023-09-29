@@ -65,7 +65,7 @@ select {
   position: relative;
   width: 100%;
   appearance: none;
-  background: url(../images/arrow-down.svg) calc(100% - 20px) calc(50%) no-repeat;
+  background: url(/images/arrow-down.svg) calc(100% - 20px) calc(50%) no-repeat;
 
   @extend button;
   @extend .secondary;
@@ -76,15 +76,15 @@ select {
 
   &.select-level {
     background:
-      url(../images/star-hollow.svg) 20px 50% no-repeat,
-      url(../images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
+      url(/images/star-hollow.svg) 20px 50% no-repeat,
+      url(/images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
     padding-left: 60px;
   }
 
   &.select-time {
     background:
-      url(../images/clock.svg) 20px 50% no-repeat,
-      url(../images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
+      url(/images/clock.svg) 20px 50% no-repeat,
+      url(/images/arrow-down.svg) calc(100% - 20px) 50% no-repeat;
     padding-left: 60px;
   }
 }
