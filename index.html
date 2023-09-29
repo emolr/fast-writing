@@ -1,8 +1,122 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><title>fast writing</title><link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- Place favicon.ico in the root directory --><link rel="stylesheet" href="styles/main.css"></head><body><!--[if lt IE 10]>
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fast writing</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    
+    <!-- endbuild -->
+
+    <script type="module" crossorigin src="/assets/index-b0197450.js"></script>
+    <link rel="stylesheet" href="/assets/index-d24a7e99.css">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--><audio id="successSound" src="sounds/lib.wav"></audio><div class="app"><div class="app__settings"><div><h1>Ord på tid</h1><p class="l-large m-b-xl">Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p></div><div class="l-small"><select name="level" id="levelSelect" class="select-level js-select-level"><option value="1">Nem</option><option value="2">Middelsvær</option><option value="3">Meak</option><option value="4">Korean</option></select><select name="time" id="timeSelect" class="select-time js-select-time m-b-m"><option value="60">1 Minut</option><option value="120">2 Minutter</option><option value="180">3 Minutter</option></select><button class="js-start-game expand">Sæt igang!</button></div></div><div class="app__game hide"><div><img src="images/clock.svg" alt="" width="30" height="auto"></div><h1 class="dim m-b-xl"><span class="js-countdown"></span></h1><div class="word-slider"><div class="js-words word-slider__inner"></div></div><div><div><input type="text" class="js-word-input l-large m-b-m"></div><p class="l-medium">Skriv ordende ovenfor så hurtigt du kan og få point for alle dem du staver rigtig</p></div></div><div class="app__results hide"><div><h2>Flot resultat!</h2><p class="l-medium m-b-l">Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p></div><div class="m-b-l"><div class="m-b-s stars js-stars"></div><p><b>Du har fået <span class="js-user-points"></span> / <span class="js-user-entries"></span> rigtige</b></p></div><div><button class="js-show-settings secondary">Vælg andre indstillinger</button>&nbsp;&nbsp; <button class="js-start-game">Prøv igen</button></div><div class="js-error-word-text hide m-t-xl"><p class="m-b-m">Herunder kan du se de ord du ikke fik helt rigtige.</p><div class="js-error-word-list h3 error-list"></div></div></div></div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    <![endif]-->
+
+    <div class="app">
+      <div class="app__settings">
+        <div>
+          <h1>Ord på tid</h1>
+          <p class="l-large m-b-xl">Spillet går ud på at du skal skrive så mange ord du kan nå på tiden, og blive bedre til at skrive hurtigt og stave rigtigt.</p>
+        </div>
+
+        <div class="l-small">
+
+          <select name="level" id="levelSelect" class="select-level js-select-level">
+            <option value="1">Nem</option>
+            <option value="2">Middelsvær</option>
+            <option value="3">Meak</option>
+            <option value="4">Korean</option>
+          </select>
+
+          <select name="time" id="timeSelect" class="select-time js-select-time m-b-m">
+            <option value="60">1 Minut</option>
+            <option value="120">2 Minutter</option>
+            <option value="180">3 Minutter</option>
+          </select>
+
+          <button class="js-start-game expand">Sæt igang!</button>
+        </div>
+      </div>
+
+      <div class="app__game hide">
+        <div>
+          <img src="images/clock.svg" alt="" width="30" height="auto">
+        </div>
+        <h1 class="dim m-b-xl">
+          <span class="js-countdown"></span>
+        </h1>
+        <div class="word-slider">
+          <div class="js-words word-slider__inner"></div>
+        </div>
+        <div>
+          <div>
+            <input type="text" class="js-word-input l-large m-b-m">
+          </div>
+          <p class="l-medium">
+            Skriv ordende ovenfor så hurtigt du kan og få point for alle dem du staver rigtig
+          </p>
+        </div>
+      </div>
+
+      <div class="app__results hide">
+        <div>
+          <h2>Flot resultat!</h2>
+          <p class="l-medium m-b-l">Tiden er opbrugt, men du kan prøve igen og blive hurtigere og bedre til at skrive!</p>
+        </div>
+        <div class="m-b-l">
+          <div class="m-b-s stars js-stars"></div>
+          <p>
+            <b>
+              Du har fået <span class="js-user-points"></span> / <span class="js-user-entries"></span> rigtige
+            </b>
+          </p>
+        </div>
+        <div>
+          <button class="js-show-settings secondary">Vælg andre indstillinger</button>&nbsp;&nbsp;
+          <button class="js-start-game">Prøv igen</button>
+        </div>
+        <div class="js-error-word-text hide m-t-xl">
+          <p class="m-b-m">Herunder kan du se de ord du ikke fik helt rigtige.</p>
+          <div class="js-error-word-list h3 error-list"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sounds -->
+    <audio id="successSound" src="sounds/lib.wav" ></audio>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='https://www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');</script><script src="scripts/main.js"></script></body></html>
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script type="text/javascript" src="//fast.fonts.net/jsapi/e79b1ea5-8b8d-4ac9-a478-4bd68e3f8455.js"></script>
+    
+    <!-- endbuild -->
+  </body>
+</html>
